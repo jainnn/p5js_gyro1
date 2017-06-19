@@ -1,17 +1,16 @@
 var forceX = 0;
 var forceY = 0;
-var bubbles = [];
+var bulles = [];
 
-function windowResized() { // Fullscreen to resize 
+function windowResized() { // plein écran au resize aussi
 	resizeCanvas(windowWidth, windowHeight);
 }
 function setup(){
-	// fullscreen canvas
+	// une canvas plein écran
 	createCanvas(windowWidth, windowHeight);
 
-	// Start gyrojs, to update forceX and forceY
-	
-	gyro.frequency = 10; // Refresh 10 times per second
+	// démarrer gyrojs, pour mettre à jour forceX et forceY
+	gyro.frequency = 10; // rafraichir 10 fois par secondes
 	gyro.startTracking(function(o) {
         // o.x, o.y, o.z for accelerometer
         // o.alpha, o.beta, o.gamma for gyro
@@ -19,36 +18,36 @@ function setup(){
         forceY = o.beta/50;
     });
 
-    // Creation of bubbles
+    // création des bulles
     for (var i = 0; i < 5; i++) {
-    	bubbles[i] = new Bubble();
+    	bulles[i] = new Bulle();
     };
 }
 function draw(){
-	background('#FFFFFF'); // White background
+	background('#FFFFFF'); // fond blanc
 
-	fill(0); // View the forces
+	fill(0); // afficher les forces
 	text("forceX : "+forceX, 30, 30);
 	text("forceY : "+forceY, 30, 50);
     fill('#ECECEC');
 
-	// Update bubbles
-	for (var i = 0; i < bubbles.length; i++) {
-		bubbles[i].update();
+	// update des bulles
+	for (var i = 0; i < bulles.length; i++) {
+		bulles[i].update();
 	};
 }
 
-function Bubble(){
-	this.x = width/2; // Starts at the center
+function Bulle(){
+	this.x = width/2; // démarre au centre
 	this.y = height/2;
 	this.vitx = random(2, 12);
 	this.vity = random(2, 12);
 	this.diam = random(20, 60);
 }
-Bubble.prototype = {
+Bulle.prototype = {
 	update: function(){
 
-		// The speed is proportional to the current forces
+		// la vitesse est proportionnée aux forces actuelles
 		this.x += this.vitx * forceX;
 		this.y += this.vity * forceY;
 
