@@ -22,7 +22,7 @@ function setup(){
     // Creation of bars
     for (var i = 0; i < 6; i++) {
     	bars[i] = new Bar();
-    };
+    }
 }
 function draw(){
 	background(250); 
@@ -33,7 +33,7 @@ function draw(){
 	// Update bubbles
 	for (var i = 0; i < bars.length; i++) {
 		bars[i].update();
-	};
+	}
 }
 
 
@@ -68,7 +68,7 @@ Bubble.prototype = {
 		}
 		
   rectMode(CENTER);
-  rect(this.x, this.y, this.b, this.b)
-		//ellipse(this.x, this.y, this.b, this.b);		
+ // rect(this.x, this.y, this.b, this.b)
+		ellipse(this.x, this.y, this.b, this.b);		
 	}
 }
