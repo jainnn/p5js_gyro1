@@ -33,7 +33,7 @@ function draw(){
     fill('#ECECEC');
 
 	// Update bubbles
-	for (var i = 0; i < bulles.length; i++) {
+	for (var i = 0; i < bubbles.length; i++) {
 		bubbles[i].update();
 	};
 }
